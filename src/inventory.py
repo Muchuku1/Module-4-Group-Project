@@ -1,4 +1,4 @@
-from src.models import Product
+from src.product import Product
 
 class Inventory:
     def __init__(self):
