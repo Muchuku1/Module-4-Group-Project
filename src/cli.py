@@ -7,11 +7,11 @@ def run_cli():
         print("\n========================================")
         print("      INVENTORY MANAGEMENT SYSTEM       ")
         print("========================================")
-        print("1. Register New Product (Store Manager)[cite: 1, 2]")
-        print("2. Restock Stock Levels (Store Manager)[cite: 1, 2]")
-        print("3. Monitor Sales & Update Sold Items (Customer Service)[cite: 1, 2]")
-        print("4. Search Through Inventory Items[cite: 1]")
-        print("5. View 'Out of Stock' Items[cite: 1]")
+        print("1. Register New Product (Store Manager)")
+        print("2. Restock Stock Levels (Store Manager)")
+        print("3. Monitor Sales & Update Sold Items (Customer Service)")
+        print("4. Search Through Inventory Items")
+        print("5. View 'Out of Stock' Items")
         print("6. View All Inventory Products")
         print("7. Exit")
         
@@ -23,7 +23,7 @@ def run_cli():
             try:
                 price = float(input("Enter Price: "))
                 qty = int(input("Enter Initial Quantity: "))
-                success, msg = inventory.register_product(pid, name, price, qty)
+                _, msg = inventory.register_product(pid, name, price, qty)
                 print(f"\n[INFO] {msg}")
             except ValueError:
                 print("\n[ERROR] Invalid price or quantity format.")
@@ -32,7 +32,7 @@ def run_cli():
             pid = input("Enter Product ID to restock: ").strip()
             try:
                 qty = int(input("Enter quantity to add: "))
-                success, msg = inventory.restock_product(pid, qty)
+                _, msg = inventory.restock_product(pid, qty)
                 print(f"\n[INFO] {msg}")
             except ValueError:
                 print("\n[ERROR] Invalid quantity format.")
@@ -41,7 +41,7 @@ def run_cli():
             pid = input("Enter Product ID sold: ").strip()
             try:
                 qty = int(input("Enter quantity sold: "))
-                success, msg = inventory.update_sold_items(pid, qty)
+                _, msg = inventory.update_sold_items(pid, qty)
                 print(f"\n[INFO] {msg}")
             except ValueError:
                 print("\n[ERROR] Invalid quantity format.")
@@ -76,3 +76,5 @@ def run_cli():
             break
         else:
             print("\n[ERROR] Invalid choice. Please select an option between 1 and 7.")
+
+          
