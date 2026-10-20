@@ -2,7 +2,6 @@ from src.models import Product
 
 class Inventory:
     def __init__(self):
-        # Initial sample products for demonstration
         self.products = {
             "101": Product("101", "Maize Flour (2kg)", 180.0, 15),
             "102": Product("102", "Cooking Oil (1L)", 350.0, 0),
