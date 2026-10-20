@@ -13,10 +13,9 @@ def run_cli():
         print("4. Search Through Inventory Items")
         print("5. View 'Out of Stock' Items")
         print("6. View All Inventory Products")
-        print("7. Save Inventory ")
-        print("8. Exit")
+        print("7. Exit")
         
-        choice = input("\nEnter your choice (1-8): ").strip()
+        choice = input("\nEnter your choice (1-7): ").strip()
         
         if choice == "1":
             pid = input("Enter Product ID: ").strip()
@@ -24,7 +23,7 @@ def run_cli():
             try:
                 price = float(input("Enter Price: "))
                 qty = int(input("Enter Initial Quantity: "))
-                success, msg = inventory.register_product(pid, name, price, qty)
+                _, msg = inventory.register_product(pid, name, price, qty)
                 print(f"\n[INFO] {msg}")
             except ValueError:
                 print("\n[ERROR] Invalid price or quantity format.")
@@ -33,7 +32,7 @@ def run_cli():
             pid = input("Enter Product ID to restock: ").strip()
             try:
                 qty = int(input("Enter quantity to add: "))
-                success, msg = inventory.restock_product(pid, qty)
+                _, msg = inventory.restock_product(pid, qty)
                 print(f"\n[INFO] {msg}")
             except ValueError:
                 print("\n[ERROR] Invalid quantity format.")
@@ -42,7 +41,7 @@ def run_cli():
             pid = input("Enter Product ID sold: ").strip()
             try:
                 qty = int(input("Enter quantity sold: "))
-                success, msg = inventory.update_sold_items(pid, qty)
+                _, msg = inventory.update_sold_items(pid, qty)
                 print(f"\n[INFO] {msg}")
             except ValueError:
                 print("\n[ERROR] Invalid quantity format.")
@@ -71,16 +70,8 @@ def run_cli():
             print("\n--- Current Supermarket Inventory ---")
             for p in all_p:
                 print(f"ID: {p.product_id} | Name: {p.name} | Price: {p.price} | Qty: {p.quantity}")
-
-        elif choice == "7":
-            save = input("Save inventory to inventory.json before exiting? (y/n): ").strip().lower()
-            if save == "y":
-                inventory.save()
-                print("\n[INFO] Inventory saved to inventory.json.")
-            print("\nExiting Inventory Management System. Goodbye!")
-            break
                 
-        elif choice == "8":
+        elif choice == "7":
             print("\nExiting Inventory Management System. Goodbye!")
             break
         else:
